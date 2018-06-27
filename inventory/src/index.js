@@ -12,6 +12,7 @@ import {createElement, render} from 'rax';
 // import App from './demo/demo_animated';   //production some error on android
 
 // import App from './demo/demo_nuke/demo_button';
-import App from './demo/demo_nuke/demo_navigator';
+// import App from './demo/demo_nuke/demo_navigator';
+import App from './demo/demo_router_rax_navigation';
 
 render(<App />);
