@@ -1,13 +1,13 @@
 import {createElement, render} from 'rax';
-// import App from './App';
-// import App from './demo/demo_canvas';
-// import App from './demo/demo_charts';
-// import App from './demo/demo_drag';
-// import App from './demo/demo_webgl';
-// import App from './demo/demo_perf';
-// import App from './demo/demo_parallax';
-// import App from './demo/demo_component';
-// import App from './demo/demo_modules';
-import App from './demo/demo_redux_todos';
+// import App from './App'; //production success
+// import App from './demo/demo_canvas';    //production error on android
+// import App from './demo/demo_charts';   //production error on android
+// import App from './demo/demo_drag';  //production error on android
+// import App from './demo/demo_webgl';    //production error on android
+// import App from './demo/demo_perf';     //production error
+// import App from './demo/demo_parallax';  //production some error on android
+// import App from './demo/demo_component'; //production error
+import App from './demo/demo_modules';   //production error on android
+// import App from './demo/demo_redux_todos';   //production some error on android
 
 render(<App />);

@@ -1,16 +1,14 @@
 import {createElement, Component} from 'rax';
 import View from 'rax-view';
 import Text from 'rax-text';
-import * as fetchDemoDataLocal from './fetchDemoData.json';
 class FetchDemo extends Component {
   state={
     data: {}
   }
 
   componentDidMount() {
-    console.log('fetchDemoDataLocal::',fetchDemoDataLocal);
     var self = this;
-    fetch(location.origin + '/src/demo/demo_modules/fetchDemoData.json')
+    fetch('https://raw.githubusercontent.com/alibaba/rax/master/examples/modules/src/fetchDemoData.json')
       .then(function(response) {
         return response.json();
       })
