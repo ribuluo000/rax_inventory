@@ -47,7 +47,9 @@
     "universal-jsonp": "^0.6.4-1",
     "universal-panresponder": "^0.6.4",
     "universal-perf": "^0.6.4",
-    "universal-stylesheet": "^0.6.4"
+    "universal-platform": "^0.6.4",
+    "universal-stylesheet": "^0.6.4",
+    "universal-toast": "^0.6.4"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
