@@ -14,7 +14,8 @@
     "rax-charts": "^0.6.4",
     "rax-image": "^0.6.4",
     "rax-text": "^0.6.4",
-    "rax-view": "^0.6.4"
+    "rax-view": "^0.6.4",
+    "universal-panresponder": "^0.6.4"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
