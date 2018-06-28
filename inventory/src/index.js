@@ -14,6 +14,9 @@ import {createElement, render} from 'rax';
 // import App from './demo/demo_nuke/demo_button';
 // import App from './demo/demo_nuke/demo_navigator';
 // import App from './demo/demo_router_rax_navigation';
-import App from './demo/demo_router_universal';
-
+// import App from './demo/demo_router_universal';
+import App from './App';
+import global_util from './util/global_util';
+global_util.init();
+console.log(constant_util);
 render(<App />);

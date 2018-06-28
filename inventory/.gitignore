@@ -6,6 +6,8 @@
 .idea/
 yarn.lock
 package-lock.json
+webpack.config.js
+src/demo/demo_antd_mobile/
 
 node_modules/
 build/
