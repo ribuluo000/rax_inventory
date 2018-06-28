@@ -1,22 +1,116 @@
 /**
  * Created by nick on 2018/6/28.
  */
-import { createElement,Component } from "rax";
-import Button from "rax-button";
 
-export default class Page extends Component {
+/**
+ * Created by nick on 2018/6/28.
+ */
+import { Button, Env, Input, ThemeProvider, View } from "weex-nuke";
+import { createElement,Component } from "rax";
+const { isWeb, appInfo } = Env;
+const { StyleProvider } = ThemeProvider;
+
+
+export default class MyPage extends Component {
     static navigationOptions = {
         title : ({ state }) => state.params.name,
         header : false
     };
 
-    render() {
+    constructor() {
+        super();
+        this.state = {
+            // user_name: '',
+            // password: '',
+            // status_user_name: 'error',
+            // status_password: 'error',
+            // errorMessage: 'errorMessage',
+        };
+
+    }
+
+    // validate_user_name = (e)=>{
+    //     console.log(e);
+    //     console.log(this.refs.ref_input_user_name);
+    //     console.log(this.state);
+    //
+    //     if(this.state.user_name.length<6){
+    //         return false;
+    //     }
+    //     return true;
+    // };
+    // validate_password = (e)=>{
+    //     console.log(e);
+    //     console.log(this.state);
+    //
+    //     if(this.state.user_name.length<6){
+    //         return false;
+    //     }
+    //     return true;
+    // };
+
+    onPress_btn_register = () => {
+        console.log(this.ref_input_user_name);
+        let user_name = this.ref_input_user_name.wrappedInstance.refs.baseinput.state.value;
+        let password = this.ref_input_password.wrappedInstance.refs.baseinput.state.value;
+        console.log(user_name, password);
+        const { navigation, api_login } = this.props;
+        const { navigate } = navigation;
         const { goBack } = this.props.navigation;
+        goBack();
+        return;
+
+
+        api_login();
+        navigate(constant_util.route_name.Register, { name : 'Jane' })
+    };
+
+    render() {
+        const { navigation, api_login } = this.props;
+        const { navigate } = navigation;
+
         return (
-            <Button
-                title="Go back"
-                onPress={() => goBack()}
-            />
+            <StyleProvider style={style_util.md} androidConfigs={{ materialDesign : true }}>
+                <View style={style_util.container}>
+                    <Input
+                        maxLength={19}
+                        type="text"
+                        placeholder={constant_show_util.please_input_user_name}
+                        ref={(ref) => {
+                            this.ref_input_user_name = ref;
+                        }}
+                    />
+
+                    <Input
+                        maxLength={19}
+                        type="password"
+                        // value={this.state.password}
+                        placeholder={constant_show_util.please_input_password}
+                        ref={(ref) => {
+                            this.ref_input_password = ref;
+                        }}
+                        // onInput={this.validate_password}
+                        // status={this.state.status_password}
+                        // errorMessage={this.state.errorMessage}
+                    />
+                    <Input
+                        maxLength={19}
+                        type="password"
+                        placeholder={constant_show_util.please_input_repeat_password}
+                        ref={(ref) => {
+                            this.ref_input_repeat_password = ref;
+                        }}
+                    />
+
+                    <Button
+                        type="primary"
+                        onPress={this.onPress_btn_register}
+                    >
+                        {constant_show_util.register}
+                    </Button>
+                </View>
+            </StyleProvider>
         );
     }
+
 }

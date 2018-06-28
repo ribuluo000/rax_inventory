@@ -1,26 +1,70 @@
 /**
  * Created by nick on 2018/6/28.
  */
+import { Button, Env, Input, ThemeProvider, View } from "weex-nuke";
 import { createElement,Component } from "rax";
-import Button from "rax-button";
+const { isWeb, appInfo } = Env;
+const { StyleProvider } = ThemeProvider;
 
-export default class Page extends Component {
+
+
+export default class MyPage extends Component {
     static navigationOptions = {
         title : 'Welcome'
     };
 
-    render() {
+    constructor() {
+        super();
+        this.state = {
+
+        };
+
+    }
+
+    onPress_btn_login = () => {
+        console.log(this.ref_input_user_name);
+        let user_name = this.ref_input_user_name.wrappedInstance.refs.baseinput.state.value;
+        let password = this.ref_input_password.wrappedInstance.refs.baseinput.state.value;
+        console.log(user_name, password);
         const { navigation, api_login } = this.props;
         const { navigate } = navigation;
 
+        api_login();
+        navigate(constant_util.route_name.Register, { name : 'Jane' })
+    };
+
+    render() {
+
         return (
-            <Button
-                title="Go to Jane's profile"
-                onPress={() => {
-                    api_login();
-                    navigate(constant_util.route_name.Register, { name : 'Jane' })
-                }}
-            />
+            <StyleProvider style={style_util.md} androidConfigs={{ materialDesign : true }}>
+                <View style={style_util.container}>
+                    <Input
+                        maxLength={19}
+                        type="text"
+                        placeholder={constant_show_util.please_input_user_name}
+                        ref={(ref) => {
+                            this.ref_input_user_name = ref;
+                        }}
+                    />
+
+                    <Input
+                        maxLength={19}
+                        type="password"
+                        placeholder={constant_show_util.please_input_password}
+                        ref={(ref) => {
+                            this.ref_input_password = ref;
+                        }}
+                    />
+
+                    <Button
+                        type="primary"
+                        onPress={this.onPress_btn_login}
+                    >
+                        {constant_show_util.login}
+                    </Button>
+                </View>
+            </StyleProvider>
         );
     }
+
 }
