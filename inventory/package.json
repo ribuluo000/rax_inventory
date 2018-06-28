@@ -16,7 +16,9 @@
     "rax-canvas": "^0.6.4",
     "rax-charts": "^0.6.4",
     "rax-checkbox": "^0.6.4",
+    "rax-components": "^0.6.4",
     "rax-countdown": "^0.6.4",
+    "rax-dom": "^0.6.4",
     "rax-gotop": "^0.6.4",
     "rax-grid": "^0.6.4",
     "rax-icon": "^0.6.4",
@@ -51,6 +53,7 @@
     "universal-panresponder": "^0.6.4",
     "universal-perf": "^0.6.4",
     "universal-platform": "^0.6.4",
+    "universal-router": "^6.0.0",
     "universal-stylesheet": "^0.6.4",
     "universal-toast": "^0.6.4"
   },

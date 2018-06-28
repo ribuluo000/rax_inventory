@@ -13,6 +13,8 @@ import {createElement, render} from 'rax';
 
 // import App from './demo/demo_nuke/demo_button';
 // import App from './demo/demo_nuke/demo_navigator';
-import App from './demo/demo_router_rax_navigation';
+// import App from './demo/demo_antd_mobile';
+// import App from './demo/demo_router_rax_navigation';
+import App from './demo/demo_router_universal';
 
 render(<App />);
