@@ -83,5 +83,9 @@ export default {
 
     /***********天火结束*********/
 
+
+    heightMyLabelExtraComponent:'56',
+    commonSeparatorHeight__Immutable__:1,
+    commonSeparatorColor:color.grey.color5,
 };
 

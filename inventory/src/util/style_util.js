@@ -27,8 +27,36 @@ export default {
     },
 
     /**
+     * 字体颜色
+     */
+    textColorBlack:{
+        color:style_base_value_util.textColorBlack,
+    },
+    textColorGray:{
+        color:style_base_value_util.textColorGray,
+    },
+    textColorWhite:{
+        color:style_base_value_util.textColorWhite,
+    },
+    textColorOrange:{
+        color:style_base_value_util.textColorOrange,
+    },
+    textColorBlue:{
+        color:style_base_value_util.textColorBlue,
+    },
+    textColorYellow:{
+        color:style_base_value_util.textColorYellow,
+    },
+
+    /**
      * 间距大小
      */
+    paddingXXS:{
+        padding:style_base_value_util.sizeXXS,
+    },
+    paddingXS:{
+        padding:style_base_value_util.sizeXS,
+    },
     paddingS:{
         padding:style_base_value_util.sizeS,
     },
