@@ -74,7 +74,7 @@ export default class MyLabelExtraComponent extends Component {
                     >
                         {view1}
 
-                        {view_util.get_icon_font('enter')}
+                        {view_util.get_icon_font(constant_util.icon_font_name.enter)}
                     </View>
                 </Touchable>
             );

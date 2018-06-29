@@ -85,7 +85,19 @@ export default {
 
 
     heightMyLabelExtraComponent:'56',
+    /**
+     * 默认分隔线颜色和大小
+     */
     commonSeparatorHeight__Immutable__:1,
     commonSeparatorColor:color.grey.color5,
+
+    /**
+     * 默认 Header 背景颜色和大小
+     */
+    heightHeader:80,
+    backgroundColorHeader:color.blue.color5,
+    textColorHeaderCenter : color.grey.color1,     //白
+    textAlignHeaderCenter : 'center',     //居中
+    fontSizeHeaderCenter : 18,     //XL
 };
 
