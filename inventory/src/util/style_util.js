@@ -2,12 +2,13 @@
  * Created by nick on 2018/6/28.
  */
 export default {
-    container : {
-        marginTop : 40,
-        marginBottom : 40,
-        marginLeft : 40,
-        marginRight : 40,
+    common_container : {
+        padding : 40,
+        backgroundColor:'#ffffff',
 
+    },
+    common_ScrollView : {
+        flex: 1,
     },
     md:{
         Core : {

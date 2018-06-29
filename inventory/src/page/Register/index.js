@@ -5,7 +5,7 @@
 /**
  * Created by nick on 2018/6/28.
  */
-import { Button, Env, Input, ThemeProvider, View } from "weex-nuke";
+import { Button, Env, Input, ThemeProvider, View,ScrollView,Page } from "weex-nuke";
 import { createElement,Component } from "rax";
 const { isWeb, appInfo } = Env;
 const { StyleProvider } = ThemeProvider;
@@ -69,9 +69,19 @@ export default class MyPage extends Component {
         const { navigation, api_login } = this.props;
         const { navigate } = navigation;
 
+        // return <h1>aaaaa</h1>;
+
         return (
-            <StyleProvider style={style_util.md} androidConfigs={{ materialDesign : true }}>
-                <View style={style_util.container}>
+            <StyleProvider
+                style={style_util.md}
+                androidConfigs={{ materialDesign : true }}
+            >
+                <View style={style_util.common_container}>
+
+                    <ScrollView
+                        ref="vscroller"
+                        {...view_props_util.common_ScrollView}
+                    >
                     <Input
                         maxLength={19}
                         type="text"
@@ -108,6 +118,8 @@ export default class MyPage extends Component {
                     >
                         {constant_show_util.register}
                     </Button>
+                    </ScrollView>
+
                 </View>
             </StyleProvider>
         );

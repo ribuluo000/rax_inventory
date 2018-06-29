@@ -1,7 +1,7 @@
 /**
  * Created by nick on 2018/6/28.
  */
-import { Button, Env, Input, ThemeProvider, View } from "weex-nuke";
+import { Button, Env, Input, ThemeProvider, View,ScrollView } from "weex-nuke";
 import { createElement,Component } from "rax";
 const { isWeb, appInfo } = Env;
 const { StyleProvider } = ThemeProvider;
@@ -22,9 +22,9 @@ export default class MyPage extends Component {
     }
 
     onPress_btn_login = () => {
-        console.log(this.ref_input_user_name);
-        let user_name = this.ref_input_user_name.wrappedInstance.refs.baseinput.state.value;
-        let password = this.ref_input_password.wrappedInstance.refs.baseinput.state.value;
+        console.log(this.ref_Input_user_name);
+        let user_name = this.ref_Input_user_name.wrappedInstance.refs.baseinput.state.value;
+        let password = this.ref_Input_password.wrappedInstance.refs.baseinput.state.value;
         console.log(user_name, password);
         const { navigation, api_login } = this.props;
         const { navigate } = navigation;
@@ -36,14 +36,28 @@ export default class MyPage extends Component {
     render() {
 
         return (
-            <StyleProvider style={style_util.md} androidConfigs={{ materialDesign : true }}>
-                <View style={style_util.container}>
+            <StyleProvider
+                style={style_util.md}
+                androidConfigs={{ materialDesign : true }}
+            >
+
+                <View style={style_util.common_container}>
+
+
+                    <ScrollView
+                        ref={(ref)=>{
+                            this.ref_ScrollView = ref;
+                        }}
+                        {...view_props_util.common_ScrollView}
+                    >
+
+
                     <Input
                         maxLength={19}
                         type="text"
                         placeholder={constant_show_util.please_input_user_name}
                         ref={(ref) => {
-                            this.ref_input_user_name = ref;
+                            this.ref_Input_user_name = ref;
                         }}
                     />
 
@@ -52,7 +66,7 @@ export default class MyPage extends Component {
                         type="password"
                         placeholder={constant_show_util.please_input_password}
                         ref={(ref) => {
-                            this.ref_input_password = ref;
+                            this.ref_Input_password = ref;
                         }}
                     />
 
@@ -62,7 +76,10 @@ export default class MyPage extends Component {
                     >
                         {constant_show_util.login}
                     </Button>
+                    </ScrollView>
+
                 </View>
+
             </StyleProvider>
         );
     }
