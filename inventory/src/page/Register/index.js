@@ -5,7 +5,7 @@
 /**
  * Created by nick on 2018/6/28.
  */
-import { Button, Env, Input, ThemeProvider, View,ScrollView,Page } from "weex-nuke";
+import { Button, Env, Input, ThemeProvider, View, ScrollView, Page, Text } from "weex-nuke";
 import { createElement,Component } from "rax";
 const { isWeb, appInfo } = Env;
 const { StyleProvider } = ThemeProvider;
@@ -64,6 +64,12 @@ export default class MyPage extends Component {
         api_login();
         navigate(constant_util.route_name.Register, { name : 'Jane' })
     };
+    onPress_to_login = () => {
+
+        const { navigation } = this.props;
+        const { navigate } = navigation;
+        navigate(constant_util.route_name.Login, { })
+    };
 
     render() {
         const { navigation, api_login } = this.props;
@@ -118,6 +124,30 @@ export default class MyPage extends Component {
                     >
                         {constant_show_util.register}
                     </Button>
+
+
+                        <Text
+                            // numberOfLines={2}
+                            // style={{
+                            //     fontSize: 28,
+                            //     textOverflow: 'ellipsis',
+                            //     overflow: 'hidden',
+                            //     color: '#333333',
+                            //     lineHeight: 48,
+                            //     height: 48 * 2
+                            // }}
+
+                            style={[
+                                style_util.textAlignCenter,
+                                style_util.fontSizeS,
+                                style_util.paddingS,
+
+                            ]}
+
+                            onPress={this.onPress_to_login}
+                        >
+                            {constant_show_util.has_account_go_login}
+                        </Text>
                     </ScrollView>
 
                 </View>

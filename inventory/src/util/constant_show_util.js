@@ -12,7 +12,8 @@ export default {
     "confirm_password":"确认密码",
     "login":"登录",
     "register":"注册",
-    "no_account_?_go_register":"没有账号？去注册",
+    "no_account_go_register":"没有账号？去注册",
+    "has_account_go_login":"已有账号？去登录",
 
     "my":"我的",
     "base_info":"基本信息",

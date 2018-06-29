@@ -1,7 +1,7 @@
 /**
  * Created by nick on 2018/6/28.
  */
-import { Button, Env, Input, ThemeProvider, View,ScrollView } from "weex-nuke";
+import { Button, Env, Input, ThemeProvider, View, ScrollView, Text } from "weex-nuke";
 import { createElement,Component } from "rax";
 const { isWeb, appInfo } = Env;
 const { StyleProvider } = ThemeProvider;
@@ -76,6 +76,7 @@ export default class MyPage extends Component {
                     >
                         {constant_show_util.login}
                     </Button>
+
                     </ScrollView>
 
                 </View>

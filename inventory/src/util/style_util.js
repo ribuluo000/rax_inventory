@@ -1,7 +1,9 @@
 /**
  * Created by nick on 2018/6/28.
  */
+import style_base_value_util from './style_base_value_util';
 export default {
+    style_base_value_util,
     common_container : {
         padding : 40,
         backgroundColor:'#ffffff',
@@ -10,6 +12,109 @@ export default {
     common_ScrollView : {
         flex: 1,
     },
+
+    /**
+     * 字体大小
+     */
+    fontSizeS:{
+        fontSize:style_base_value_util.fontSizeS,
+    },
+    fontSizeM:{
+        fontSize:style_base_value_util.fontSizeM,
+    },
+    fontSizeL:{
+        fontSize:style_base_value_util.fontSizeL,
+    },
+
+    /**
+     * 间距大小
+     */
+    paddingS:{
+        padding:style_base_value_util.sizeS,
+    },
+    paddingM:{
+        padding:style_base_value_util.sizeM,
+    },
+    paddingL:{
+        padding:style_base_value_util.sizeL,
+    },
+
+    flex1 : {
+        flex : 1,
+    },
+    textAlignRight : {
+        textAlign : 'right',
+    },
+    textAlignCenter : {
+        textAlign : 'center',
+    },
+
+    flexWrapWrap : {
+        flexWrap : 'wrap',
+    },
+    flexWrapNowrap : {
+        flexWrap : 'nowrap',
+    },
+    flexDirectionRow : {
+        flexDirection : 'row',
+    },
+    flexDirectionColumn : {
+        flexDirection : 'column',
+    },
+
+    positionAbsolute : {
+        position : 'absolute',
+    },
+    positionRelative : {
+        position : 'relative',
+    },
+    alignItemsCenter : {
+        alignItems : 'center',
+    },
+    alignItemsStretch : {
+        alignItems : 'stretch',
+    },
+    alignSelfCenter : {
+        alignSelf : 'center',
+    },
+    alignSelfStretch : {
+        alignSelf : 'stretch',
+    },
+    justifyContentCenter : {
+        justifyContent : 'center',
+    },
+    justifyContentSpaceBetween : {
+        justifyContent : 'space-between',
+    },
+    justifyContentSpaceAround : {
+        justifyContent : 'space-around',
+    },
+    overflowHidden : {
+        overflow : 'hidden',
+    },
+    overflowScroll : {
+        overflow : 'scroll',
+    },
+
+    mRowSpaceBetween : {
+        flexDirection : 'row',
+        justifyContent : 'space-between',
+    },
+    mRowSpaceAround : {
+        flexDirection : 'row',
+        justifyContent : 'space-around',
+    },
+    mInputDelBorderBottom : {
+        borderBottomWidth : 0,
+    },
+
+    invisible : {
+        display : 'none',
+    },
+    visible : {
+        display : 'flex',
+    },
+
     md:{
         Core : {
             'color-brand1-1' : '#00BBD3',
