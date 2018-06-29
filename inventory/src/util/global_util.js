@@ -5,6 +5,7 @@ import constant_util from "./constant_util";
 import constant_show_util from "./constant_show_util";
 import style_util from "./style_util";
 import view_props_util from "./view_props_util";
+import 'regenerator/runtime';
 export default {
     init : () => {
 

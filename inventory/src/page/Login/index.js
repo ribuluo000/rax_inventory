@@ -21,7 +21,16 @@ export default class MyPage extends Component {
 
     }
 
-    onPress_btn_login = () => {
+    onPress_btn_login = async () => {
+
+        const aa = async ()=>{
+            console.log('111111');
+            return 'bb';
+        };
+
+        let b = await aa();
+        console.log(b);
+
         console.log(this.ref_Input_user_name);
         let user_name = this.ref_Input_user_name.wrappedInstance.refs.baseinput.state.value;
         let password = this.ref_Input_password.wrappedInstance.refs.baseinput.state.value;

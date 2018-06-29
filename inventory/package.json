@@ -49,6 +49,7 @@
     "rax-view": "^0.6.4",
     "rax-waterfall": "^0.6.4",
     "redux": "^4.0.0",
+    "regenerator": "^0.13.2",
     "universal-env": "^0.6.4",
     "universal-jsonp": "^0.6.4-1",
     "universal-panresponder": "^0.6.4",
