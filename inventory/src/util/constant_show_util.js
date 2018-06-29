@@ -4,6 +4,8 @@
 export default {
 
 
+    "unknown_code":"未知的状态码",
+
     "please_input_user_name":"请输入用户名",
     "please_input_password":"请输入密码",
     "please_input_repeat_password":"请输入重复密码",

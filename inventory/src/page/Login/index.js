@@ -23,23 +23,33 @@ export default class MyPage extends Component {
 
     onPress_btn_login = async () => {
 
-        const aa = async ()=>{
-            console.log('111111');
-            return 'bb';
-        };
 
-        let b = await aa();
-        console.log(b);
 
         console.log(this.ref_Input_user_name);
         let user_name = this.ref_Input_user_name.wrappedInstance.refs.baseinput.state.value;
         let password = this.ref_Input_password.wrappedInstance.refs.baseinput.state.value;
         console.log(user_name, password);
-        const { navigation, api_login } = this.props;
-        const { navigate } = navigation;
 
-        api_login();
+        let body = {
+            user_name, password
+        };
+
+        view_util.show_loading();
+        let jsonObj = await api_util.login(body);
+        view_util.hide_loading();
+
+        if(!jsonObj){
+            return;
+        }
+
+        if(!(jsonObj.code == CODE.code_0.code)){
+            view_util.show_toast(api_util.get_msg(jsonObj));
+            return;
+        }
+        const { navigation } = this.props;
+        const { navigate } = navigation;
         navigate(constant_util.route_name.Register, { name : 'Jane' })
+        return;
     };
 
     render() {
