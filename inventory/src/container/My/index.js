@@ -4,8 +4,9 @@
 import { createElement,Component } from "rax";
 import { connect } from 'rax-redux';
 import Page from '../../page/My';
+import BaseComponent from "../../common/BaseComponent";
 
-class Container extends Component{
+class Container extends BaseComponent{
     render(){
         return (
             <Page {...this.props}/>

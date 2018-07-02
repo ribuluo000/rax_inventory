@@ -3,12 +3,13 @@
  */
 import { Button, Env, Input, ThemeProvider, View, ScrollView, Text } from "weex-nuke";
 import { createElement,Component } from "rax";
+import BaseComponent from "../../common/BaseComponent";
 const { isWeb, appInfo } = Env;
 const { StyleProvider } = ThemeProvider;
 
 
 
-export default class MyPage extends Component {
+export default class MyPage extends BaseComponent {
     static navigationOptions = {
         title : 'Welcome'
     };

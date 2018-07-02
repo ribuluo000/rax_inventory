@@ -14,7 +14,8 @@ import MyLabelExtraComponent from "../../../component/MyLabelExtraComponent";
 import MyHeaderComponent from "../../../component/MyHeaderComponent";
 import MyListViewComponent from "../../../component/MyListViewComponent";
 import { cloneDeep } from "lodash";
-export default class MyPage extends Component {
+import BaseComponent from "../../../common/BaseComponent";
+export default class MyPage extends BaseComponent {
     static navigationOptions = {
         title : ({ state }) => state.params.name,
         header : false
@@ -38,9 +39,10 @@ export default class MyPage extends Component {
 
     }
 
-    onPress_back = ()=>{
-        view_util.goBack(this);
-    };
+    // onPress_back = ()=>{
+    //     console.log(this);
+    //     view_util.goBack(this);
+    // };
 
     onPress__list_item = (item, sectionID, rowID) => {
 

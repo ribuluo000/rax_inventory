@@ -5,8 +5,9 @@ import { createElement,Component } from "rax";
 import { connect } from 'rax-redux';
 import { api_login_error, api_login_success,api_login } from '../../redux/action/auth_action';
 import Page from '../../page/Register';
+import BaseComponent from "../../common/BaseComponent";
 
-class Container extends Component{
+class Container extends BaseComponent{
     render(){
         return (
             <Page {...this.props}/>

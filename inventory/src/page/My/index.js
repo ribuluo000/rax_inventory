@@ -11,7 +11,8 @@ const { isWeb, appInfo } = Env;
 const { StyleProvider } = ThemeProvider;
 
 import MyLabelExtraComponent from "../../component/MyLabelExtraComponent";
-export default class MyPage extends Component {
+import BaseComponent from "../../common/BaseComponent";
+export default class MyPage extends BaseComponent {
     static navigationOptions = {
         title : ({ state }) => state.params.name,
         header : false
