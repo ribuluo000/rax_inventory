@@ -49,7 +49,7 @@ export default class MyPage extends BaseComponent {
         console.log('onPress__list_item',item);
 
         const { goBack,navigate } = this.props.navigation;
-        navigate(constant_util.route_name.ProviderDetail, { detail : item })
+        navigate(constant_util.route_name.CustomerDetail, { detail : item })
     };
 
 
@@ -103,7 +103,7 @@ export default class MyPage extends BaseComponent {
         };
 
         view_util.show_loading();
-        let jsonObj = await api_util.provider_get_list(body);
+        let jsonObj = await api_util.customer_get_list(body);
         view_util.hide_loading();
 
         let has_more = false;
@@ -175,7 +175,7 @@ export default class MyPage extends BaseComponent {
         };
 
         view_util.show_loading();
-        let jsonObj = await api_util.provider_get_list(body);
+        let jsonObj = await api_util.customer_get_list(body);
         view_util.hide_loading();
 
         let has_more = false;
@@ -231,7 +231,7 @@ export default class MyPage extends BaseComponent {
         console.log('onPress_right_btn');
 
         const { goBack,navigate } = this.props.navigation;
-        navigate(constant_util.route_name.ProviderAdd, {})
+        navigate(constant_util.route_name.CustomerAdd, {})
     };
 
     render() {
@@ -252,7 +252,7 @@ export default class MyPage extends BaseComponent {
             >
                 <View style={style_util.common_container}>
                     <MyHeaderComponent
-                        title={constant_show_util.provider}
+                        title={constant_show_util.customer}
                         onPress_back={this.onPress_back}
                         right_btn_text={constant_show_util.add}
                         onPress_right_btn={this.onPress_right_btn}
