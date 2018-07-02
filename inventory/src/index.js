@@ -13,6 +13,11 @@ import {createElement, render} from 'rax';
 
 // import App from './demo/demo_nuke/demo_button';
 // import App from './demo/demo_nuke/demo_navigator';
+// import App from './demo/demo_nuke/demo_listview';    //todo onEndReached 不好用；
+// import App from './demo/demo_nuke/demo_scrollview';
+
+// import App from './demo/demo_rax/demo_listview'; //todo onRefresh 不好用；
+// import App from './demo/demo_rax/demo_refresh_control'; //todo onRefresh 不好用；
 // import App from './demo/demo_router_rax_navigation';
 // import App from './demo/demo_router_universal';
 import App from './App';

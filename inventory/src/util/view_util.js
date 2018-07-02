@@ -59,5 +59,9 @@ export default {
         let { navigate } = that.props.navigation;
         navigate(constant_util.route_name.Login, { })
     },
+    goBack:(that)=>{
+        let { navigate,goBack } = that.props.navigation;
+        goBack();
+    },
 
 };

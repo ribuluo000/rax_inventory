@@ -34,7 +34,16 @@ export default class MyHeaderComponent extends Component {
                     onPress={onPress_right_btn}
                     type="primary"
                     // type="secondary"
-                >{right_btn_text}添加</Button>
+                >
+                    <Text
+                    style={[
+                        {
+                            fontSize:style_util.style_base_value_util.fontSizeXS,
+                        }
+                    ]}
+                    >{right_btn_text}</Text>
+
+                    </Button>
             );
         }
 
@@ -95,7 +104,7 @@ export default class MyHeaderComponent extends Component {
                         color:style_util.style_base_value_util.textColorHeaderCenter,
 
                     }
-                ]}>{title}+sdfsfs</Text>
+                ]}>{title}</Text>
                     <View
                         style={{
                             width:'30%',
