@@ -61,4 +61,16 @@ export default {
         return ret;
     },
 
+    product_get_list: async (data={},callback)=>{
+        let url = CONFIG.API_BASE_URL+REQ_URL.REQ_URL___product__get_list;
+        let ret = undefined;
+        try {
+            ret = await request(url,options_common(data));
+            callback && callback(undefined,ret);
+        }catch (err){
+            callback ? callback(err):on_catch_common(err);
+        }
+        return ret;
+    },
+
 };

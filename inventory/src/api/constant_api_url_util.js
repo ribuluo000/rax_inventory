@@ -1,5 +1,7 @@
 /**
  * Created by nick on 2018/6/22.
+ *
+ * @deprecated use constants/REQ_URL
  */
 
 
