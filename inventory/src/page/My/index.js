@@ -10,7 +10,6 @@ import { createElement,Component } from "rax";
 const { isWeb, appInfo } = Env;
 const { StyleProvider } = ThemeProvider;
 
-import MyImage from '../../component/MyImage';
 import MyLabelExtraComponent from "../../component/MyLabelExtraComponent";
 export default class MyPage extends Component {
     static navigationOptions = {
@@ -21,50 +20,10 @@ export default class MyPage extends Component {
     constructor() {
         super();
         this.state = {
-            // user_name: '',
-            // password: '',
-            // status_user_name: 'error',
-            // status_password: 'error',
-            // errorMessage: 'errorMessage',
         };
 
     }
 
-    // validate_user_name = (e)=>{
-    //     console.log(e);
-    //     console.log(this.refs.ref_input_user_name);
-    //     console.log(this.state);
-    //
-    //     if(this.state.user_name.length<6){
-    //         return false;
-    //     }
-    //     return true;
-    // };
-    // validate_password = (e)=>{
-    //     console.log(e);
-    //     console.log(this.state);
-    //
-    //     if(this.state.user_name.length<6){
-    //         return false;
-    //     }
-    //     return true;
-    // };
-
-    onPress_btn_register = () => {
-        console.log(this.ref_input_user_name);
-        let user_name = this.ref_input_user_name.wrappedInstance.refs.baseinput.state.value;
-        let password = this.ref_input_password.wrappedInstance.refs.baseinput.state.value;
-        console.log(user_name, password);
-        const { navigation, api_login } = this.props;
-        const { navigate } = navigation;
-        const { goBack } = this.props.navigation;
-        goBack();
-        return;
-
-
-        api_login();
-        navigate(constant_util.route_name.Register, { name : 'Jane' })
-    };
     onPress_mle_base_info = () => {
 
         console.log(this);

@@ -69,6 +69,8 @@ export default {
     backgroundColorRed : color.red.color5, //红
     backgroundColorYellow : color.yellow.color1, //黄
 
+    backgroundColorBlue_active : color.blue.color4, //蓝
+
     backgroundColorTransparent : transparentColor,
     backgroundColorContainer : color.grey.color4,
 
