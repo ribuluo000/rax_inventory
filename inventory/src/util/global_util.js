@@ -15,19 +15,19 @@ import Toast from 'universal-toast';
 export default {
     init : () => {
 
-        global.style_util = style_util;
-        global.constant_show_util = constant_show_util;
-        global.constant_util = constant_util;
-        global.view_props_util = view_props_util;
-        global.view_props_util = view_props_util;
-        global.view_util = view_util;
-        global.constant_api_url = constant_api_url;
-        global.api_util = api_util;
-        global.CODE = CODE;
-        global.request = request;
-        global.options_common = options_common;
-        global.Toast = Toast;
+        window.style_util = style_util;
+        window.constant_show_util = constant_show_util;
+        window.constant_util = constant_util;
+        window.view_props_util = view_props_util;
+        window.view_props_util = view_props_util;
+        window.view_util = view_util;
+        window.constant_api_url = constant_api_url;
+        window.api_util = api_util;
+        window.CODE = CODE;
+        window.request = request;
+        window.options_common = options_common;
+        window.Toast = Toast;
 
-        console.log(global);
+        console.log(window);
     },
 };
