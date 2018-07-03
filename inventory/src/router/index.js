@@ -5,8 +5,10 @@ import My from "../container/My";
 import Provider from "../container/My/Provider";
 import Customer from "../container/My/Customer";
 import Product from "../container/My/Product";
+import ProductBatch from "../container/My/Product/Batch";
 
 const BasicApp = StackNavigator({
+    ProductBatch : { screen : ProductBatch },
     Product : { screen : Product },
     Customer : { screen : Customer },
     Provider : { screen : Provider },
