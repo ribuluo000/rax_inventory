@@ -15,9 +15,10 @@ const on_catch_common = (err)=>{
 const get_default_msg = (jsonObj)=>{
     let obj = CODE[`code_${jsonObj.code}`];
     if(obj){
-        return obj.description;
+        return obj.code_description;
     }else {
-        return constant_show_util.unknown_code;
+        //未知的错误码
+        return CODE.code_99998.code_description;
     }
 };
 
