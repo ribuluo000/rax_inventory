@@ -234,6 +234,21 @@ export default class MyPage extends BaseComponent {
         navigate(constant_util.route_name.CustomerAdd, {})
     };
 
+
+
+    onPress__button__search = async (value) => {
+        console.log('onPress__button__search', value);
+        this.search_key = value;
+        this.timer && clearTimeout(this.timer);
+        //refresh data
+        this.timer = setTimeout(() => {
+            this.onRefresh();
+
+        }, 300);
+        console.log('this.timer', this.timer);
+
+    };
+
     render() {
         const { navigation, api_login } = this.props;
         const { navigate } = navigation;
@@ -245,6 +260,7 @@ export default class MyPage extends BaseComponent {
         const renderRow = this.renderRow;
         const onEndReached = this.onEndReached;
         const onRefresh = this.onRefresh;
+        const onPress__button__search = this.onPress__button__search;
         return (
             <StyleProvider
                 style={style_util.md}
@@ -259,6 +275,7 @@ export default class MyPage extends BaseComponent {
 
                     />
                     <Input
+                        onChange={onPress__button__search}
                         maxLength={19}
                         type="text"
                         placeholder={constant_show_util.please_input_key}
