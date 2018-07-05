@@ -9,8 +9,8 @@ import { Env, Input, ThemeProvider, View, ScrollView, } from "weex-nuke";
 import { createElement,Component } from "rax";
 const { isWeb, appInfo } = Env;
 const { StyleProvider } = ThemeProvider;
-import MyHeaderComponent from "../../../../component/MyHeaderComponent";
-import BaseComponent from "../../../../common/BaseComponent";
+import MyHeaderComponent from "../../../../../component/MyHeaderComponent";
+import BaseComponent from "../../../../../common/BaseComponent";
 export default class MyPage extends BaseComponent {
     static navigationOptions = {
         title : ({ state }) => state.params.name,
@@ -44,20 +44,20 @@ export default class MyPage extends BaseComponent {
 
         let name = this.ref_Input_name.wrappedInstance.refs.baseinput.state.value;
         let remark = this.ref_Input_remark.wrappedInstance.refs.baseinput.state.value;
-        let telephone = this.ref_Input_telephone.wrappedInstance.refs.baseinput.state.value;
 
-        let access_token = 'access_token';  //todo need change
+        let access_token = 'access_token';      //todo need change
         let user_id = '5b31b58fdd66b03a1dcb5434';   //todo need change
+        let product_id = '5b327781bf5abe6fe4f38c6d';    //todo need change
         let body = {
             access_token,
             user_id,
             name,
             remark,
-            telephone,
+            product_id,
         };
 
         view_util.show_loading();
-        let jsonObj = await api_util.provider_add(body);
+        let jsonObj = await api_util.batch_add(body);
         view_util.hide_loading();
 
         if(!jsonObj){
@@ -115,7 +115,7 @@ export default class MyPage extends BaseComponent {
             >
                 <View style={style_util.common_container}>
                     <MyHeaderComponent
-                        title={constant_show_util.provider}
+                        title={constant_show_util.batch}
                         onPress_back={this.onPress_back}
                         right_btn_text={constant_show_util.done}
                         onPress_right_btn={this.onPress_right_btn}
@@ -133,14 +133,6 @@ export default class MyPage extends BaseComponent {
                         placeholder={constant_show_util.please_input_name}
                         ref={(ref) => {
                             this.ref_Input_name = ref;
-                        }}
-                    />
-                    <Input
-                        maxLength={19}
-                        type="number"
-                        placeholder={constant_show_util.please_input_telephone}
-                        ref={(ref) => {
-                            this.ref_Input_telephone = ref;
                         }}
                     />
 

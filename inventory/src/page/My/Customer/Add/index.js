@@ -46,7 +46,7 @@ export default class MyPage extends BaseComponent {
         let remark = this.ref_Input_remark.wrappedInstance.refs.baseinput.state.value;
         let telephone = this.ref_Input_telephone.wrappedInstance.refs.baseinput.state.value;
 
-        let access_token = 'access_token';  //todo need change
+        let access_token = 'access_token';      //todo need change
         let user_id = '5b31b58fdd66b03a1dcb5434';   //todo need change
         let body = {
             access_token,
@@ -57,7 +57,7 @@ export default class MyPage extends BaseComponent {
         };
 
         view_util.show_loading();
-        let jsonObj = await api_util.provider_add(body);
+        let jsonObj = await api_util.customer_add(body);
         view_util.hide_loading();
 
         if(!jsonObj){
@@ -115,7 +115,7 @@ export default class MyPage extends BaseComponent {
             >
                 <View style={style_util.common_container}>
                     <MyHeaderComponent
-                        title={constant_show_util.provider}
+                        title={constant_show_util.customer}
                         onPress_back={this.onPress_back}
                         right_btn_text={constant_show_util.done}
                         onPress_right_btn={this.onPress_right_btn}
