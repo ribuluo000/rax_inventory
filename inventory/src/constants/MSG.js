@@ -90,6 +90,11 @@ export default {
     "MSG___products_is_incorrect":'产品不正确',
 
 
+
+    //front
+
+    "MSG___name_can_not_be_empty":'名称不能为空',
+
     "MSG___":"MSG___",
     "MSG___":"MSG___",
 

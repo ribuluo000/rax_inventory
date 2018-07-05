@@ -7,11 +7,16 @@ import Customer from "../container/My/Customer";
 import Product from "../container/My/Product";
 import ProductBatch from "../container/My/Product/Batch";
 
+import ProviderAdd from "../container/My/Provider/Add";
+
+
 const BasicApp = StackNavigator({
+    Provider : { screen : Provider },
+    ProviderAdd : { screen : ProviderAdd },
     ProductBatch : { screen : ProductBatch },
     Product : { screen : Product },
     Customer : { screen : Customer },
-    Provider : { screen : Provider },
+
     My : { screen : My },
     Login : { screen : Login },
     Register : { screen : Register },

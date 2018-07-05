@@ -62,6 +62,9 @@ export default {
 
 
     "please_input_key":"请输入关键字",
+    "please_input_name":"请输入名称",
+    "please_input_remark":"请输入备注",
+    "please_input_telephone":"请输入手机号",
 
     "bill_type":"账单类型",
     "receive_money":"收钱",
