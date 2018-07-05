@@ -2,6 +2,7 @@ import { StackNavigator } from "rax-navigation";
 import Login from "../container/Login";
 import Register from "../container/Register";
 import My from "../container/My";
+import Bill from "../container/My/Bill";
 import Provider from "../container/My/Provider";
 import Customer from "../container/My/Customer";
 import Product from "../container/My/Product";
@@ -20,6 +21,7 @@ import ProductBatchDetail from "../container/My/Product/Batch/Detail";
 
 
 const BasicApp = StackNavigator({
+    Bill : { screen : Bill },
     ProductBatch : { screen : ProductBatch },
     ProductBatchAdd : { screen : ProductBatchAdd },
     ProductBatchDetail : { screen : ProductBatchDetail },
