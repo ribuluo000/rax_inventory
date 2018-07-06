@@ -17,9 +17,6 @@ export default class MyListViewComponent extends PureComponent{
 
   static defaultProps = {
     hasMore:true,
-    dataLv:[
-
-    ],
     renderHeader:() => {return <span>header1111111</span>},
     renderRow:() => {return <span>header1111111</span>},
 
@@ -34,7 +31,7 @@ export default class MyListViewComponent extends PureComponent{
         isRefreshing: false,
         refreshText: '↓ 下拉刷新',
 
-      dataSource:props.dataLv,
+      dataSource:props.dataLv.toArray(),
       isLoading: false,
       height: h,
     };
@@ -69,7 +66,7 @@ export default class MyListViewComponent extends PureComponent{
     if (nextProps.dataLv !== this.props.dataLv) {
 
         this.setState({
-            dataSource: nextProps.dataLv,
+            dataSource: nextProps.dataLv.toArray(),
             isLoading: false,
             isRefreshing: false,
         });

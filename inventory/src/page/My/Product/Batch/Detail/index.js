@@ -72,7 +72,7 @@ export default class MyPage extends BaseComponent {
             return;
         }
 
-        if(!(jsonObj.code == CODE.code_0.code)){
+        if(!(jsonObj.get('code') == CODE.code_0.code)){
 
             api_util.on_custom_exception_common(jsonObj);
             return;

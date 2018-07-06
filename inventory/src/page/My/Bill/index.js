@@ -31,7 +31,7 @@ export default class MyPage extends BaseComponent {
         this.state = {
             has_more:true,
             total_count:0,
-            dataLv:[],
+            dataLv:IList([]),
             setState:(state)=>{
                 this.setState(state);
             },
@@ -59,14 +59,14 @@ export default class MyPage extends BaseComponent {
 
         return (
             <View
-                key={item.key}
+                key={item.get('key')}
 
             >
                 <MyLabelExtraComponent
-                    key={item.key}
+                    key={item.get('key')}
                     onPress={()=>{onPress__list_item && onPress__list_item(item, sectionID, rowID)}}
-                    title={item.title}
-                    extra={item.extra}
+                    title={item.get('title')}
+                    extra={item.get('extra')}
                 />
 
                 {this.renderSeparator()}
@@ -119,7 +119,7 @@ export default class MyPage extends BaseComponent {
             return;
         }
 
-        if(!(jsonObj.code == CODE.code_0.code)){
+        if(!(jsonObj.get('code') == CODE.code_0.code)){
             view_util.show_toast(api_util.get_msg(jsonObj));
             this.state.setState({
                 has_more,
@@ -128,8 +128,8 @@ export default class MyPage extends BaseComponent {
             });
             return;
         }
-        total_count = jsonObj.data.total_count;
-        let data_list = jsonObj.data.data_list;
+        total_count = jsonObj.get('data').get('total_count');
+        let data_list = jsonObj.get('data').get('data_list');
         data_list.map((item,i)=>{
             let item_new = {
                 ...item,
@@ -156,73 +156,9 @@ export default class MyPage extends BaseComponent {
         console.log('onRefresh',this);
 
         //refresh data
-
-        console.log(this.ref_Input_search_key);
-        let search_key = this.ref_Input_search_key.wrappedInstance.refs.baseinput.state.value;
-
         this.page_number = 0;
-        let page_number = ++this.page_number;
-        let page_size = this.page_size;
-
-        let access_token = 'access_token';
-        let user_id = '5b31b58fdd66b03a1dcb5434';
-        let body = {
-            access_token,
-            user_id,
-            search_key,
-            page_number,
-            page_size,
-        };
-
-        view_util.show_loading();
-        let jsonObj = await api_util.bill_get_list(body);
-        view_util.hide_loading();
-
-        let has_more = false;
-        let dataLvNew = [];
-        let total_count = this.state.total_count;
-
-        if(!jsonObj){
-            this.state.setState({
-                has_more,
-                total_count,
-                dataLv:dataLvNew,
-            });
-            return;
-        }
-
-        if(!(jsonObj.code == CODE.code_0.code)){
-            view_util.show_toast(api_util.get_msg(jsonObj));
-            this.state.setState({
-                has_more,
-                total_count,
-                dataLv:dataLvNew,
-            });
-            return;
-        }
-        total_count = jsonObj.data.total_count;
-        let data_list = jsonObj.data.data_list;
-        data_list.map((item,i)=>{
-            let item_new = {
-                ...item,
-                key : item._id,
-                title : item.name,
-                subtitle : '',
-                extra : item.remark,
-            };
-            dataLvNew.push(item_new);
-        });
-
-        if(total_count>dataLvNew.length){
-            has_more = true;
-        }
-        dataLvNew = cloneDeep(dataLvNew);
-
-        this.state.setState({
-            has_more,
-            total_count,
-            dataLv:dataLvNew,
-        })
+        this.total_count = 0;
+        this.onEndReached();
     };
 
 
