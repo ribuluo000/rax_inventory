@@ -5,6 +5,8 @@ import "regenerator/runtime";
 import Toast from "universal-toast";
 import CONFIG from "../constants/CONFIG";
 import REQ_URL from "../constants/REQ_URL";
+import { fromJS,Map,Set,List } from "immutable";
+
 
 const on_custom_exception_common = (jsonObj) => {
     Toast.show(get_default_msg(jsonObj));
@@ -18,9 +20,9 @@ const on_catch_common = (err) => {
 };
 const get_default_msg = (jsonObj) => {
 
-    return jsonObj.msg;
+    return jsonObj.get('msg');
 
-    let obj = CODE[ `code_${jsonObj.code}` ];
+    let obj = CODE[ `code_${jsonObj.get('code')}` ];
     if (obj) {
         return obj.code_description;
     } else {
@@ -33,6 +35,7 @@ const request_common = async (url, data = {}, callback) => {
     let ret = null;
     try {
         ret = await request(url, options_common(data));
+        ret = fromJS(ret);
         callback && callback(null, ret);
     } catch (err) {
         callback ? callback(err) : on_catch_common(err);
@@ -45,7 +48,7 @@ export default {
     on_success_common : on_success_common,
     on_custom_exception_common : on_custom_exception_common,
     get_msg : (jsonObj) => {
-        return jsonObj.msg || get_default_msg();
+        return jsonObj.get('msg') || get_default_msg();
     },
     login : async (data = {}, callback) => {
         let url = CONFIG.API_BASE_URL + REQ_URL.REQ_URL___user__login;

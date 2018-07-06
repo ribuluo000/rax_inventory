@@ -62,10 +62,13 @@ export default class MyPage extends BaseComponent {
     };
 
     render() {
-        const { navigation, api_login } = this.props;
+        const { navigation, api_login,app_reducer } = this.props;
         const { navigate } = navigation;
 
         // return <h1>aaaaa</h1>;
+        let user_name = app_reducer.get('user_name');
+        console.log(this);
+
 
         return (
             <StyleProvider
@@ -81,7 +84,7 @@ export default class MyPage extends BaseComponent {
 
                         <MyLabelExtraComponent
                             title={constant_show_util.user_name}
-                            extra={''}
+                            extra={user_name}
                         />
                         {view_util.get_separator_h()}
                         <MyLabelExtraComponent

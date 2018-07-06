@@ -23,6 +23,7 @@ export default class MyPage extends BaseComponent {
     }
 
     onPress_btn_login = async () => {
+        console.log(this);
 
 
 
@@ -43,13 +44,28 @@ export default class MyPage extends BaseComponent {
             return;
         }
 
-        if(!(jsonObj.code == CODE.code_0.code)){
-            view_util.show_toast(api_util.get_msg(jsonObj));
+        if(!(jsonObj.get('code') == CODE.code_0.code)){
+            api_util.on_custom_exception_common(jsonObj);
             return;
         }
+
+        let user_id = jsonObj.get('data').get('user_id');
+        let access_token = jsonObj.get('data').get('access_token');
+
+        let payload = IMap({
+            user_name:user_name,
+            user_id:user_id,
+            access_token:access_token,
+            is_authenticated:true,
+        });
+        this.props.set_user_info(payload);
+
         const { navigation } = this.props;
         const { navigate } = navigation;
-        navigate(constant_util.route_name.Register, { name : 'Jane' })
+        navigate(constant_util.route_name.My, {});
+
+
+
         return;
     };
 

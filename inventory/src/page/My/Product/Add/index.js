@@ -78,7 +78,7 @@ export default class MyPage extends BaseComponent {
     check_info = () => {
         let name = this.ref_Input_name.wrappedInstance.refs.baseinput.state.value;
 
-        if (my_string_util.is_empty(name)) {
+        if (string_util.is_empty(name)) {
             view_util.show_toast(MSG.MSG___name_can_not_be_empty);
             return false;
 

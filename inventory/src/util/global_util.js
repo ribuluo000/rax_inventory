@@ -3,7 +3,7 @@
  */
 import constant_util from "./constant_util";
 import constant_show_util from "./constant_show_util";
-import my_string_util from "./my_string_util";
+import string_util from "./string_util";
 import style_util from "./style_util";
 import view_props_util from "./view_props_util";
 import view_util from "./view_util";
@@ -13,6 +13,8 @@ import MSG from "../constants/MSG";
 import "regenerator/runtime";
 import { options_common, request } from "./request";
 import Toast from "universal-toast";
+import { fromJS,Map,Set,List } from "immutable";
+
 export default {
     init : () => {
 
@@ -23,7 +25,11 @@ export default {
 
         // let global = {};
 
-        global.my_string_util = my_string_util;
+        global.IfromJS = fromJS;
+        global.IMap = Map;
+        global.ISet = Set;
+        global.IList = List;
+        global.string_util = string_util;
         global.style_util = style_util;
         global.constant_show_util = constant_show_util;
         global.constant_util = constant_util;

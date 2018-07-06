@@ -90,7 +90,7 @@ export default class MyPage extends BaseComponent {
 
     check_info = () => {
 
-        if (my_string_util.is_empty(this.name)) {
+        if (string_util.is_empty(this.name)) {
             view_util.show_toast(MSG.MSG___name_can_not_be_empty);
             return false;
 

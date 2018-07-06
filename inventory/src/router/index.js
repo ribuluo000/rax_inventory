@@ -21,6 +21,8 @@ import ProductBatchDetail from "../container/My/Product/Batch/Detail";
 
 
 const BasicApp = StackNavigator({
+    Login : { screen : Login },
+    Register : { screen : Register },
     Bill : { screen : Bill },
     ProductBatch : { screen : ProductBatch },
     ProductBatchAdd : { screen : ProductBatchAdd },
@@ -43,8 +45,7 @@ const BasicApp = StackNavigator({
 
 
     My : { screen : My },
-    Login : { screen : Login },
-    Register : { screen : Register },
+
 
 });
 

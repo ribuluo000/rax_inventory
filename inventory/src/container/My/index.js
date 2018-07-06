@@ -18,6 +18,7 @@ class Container extends BaseComponent{
 
 const mapStateToProps = state => ({
     // todos: getVisibleTodos(state.todos, state.visibilityFilter)
+    app_reducer:state.app_reducer,
 });
 
 const mapDispatchToProps = dispatch => ({

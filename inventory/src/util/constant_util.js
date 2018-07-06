@@ -4,6 +4,7 @@
 export default {
     "route_name" : {
         "Login" : "Login",
+        "My" : "My",
         "Register" : "Register",
         "BaseInfo" : "BaseInfo",
         "Bill" : "Bill",
