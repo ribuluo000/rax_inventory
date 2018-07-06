@@ -1,6 +1,7 @@
 /**
  * Created by nick on 2018/6/28.
  */
+import my_date_time_util from "./my_date_time_util";
 import constant_util from "./constant_util";
 import constant_show_util from "./constant_show_util";
 import string_util from "./string_util";
@@ -29,6 +30,7 @@ export default {
         global.IMap = Map;
         global.ISet = Set;
         global.IList = List;
+        global.my_date_time_util = my_date_time_util;
         global.string_util = string_util;
         global.style_util = style_util;
         global.constant_show_util = constant_show_util;

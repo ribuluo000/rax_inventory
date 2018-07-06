@@ -21,6 +21,7 @@ export default class MyPage extends BaseComponent {
         header : false
     };
     initData = ()=>{
+        this.total_count = 0;
         this.page_number = 0;
         this.page_size = 20;
     };
@@ -30,7 +31,6 @@ export default class MyPage extends BaseComponent {
         this.initData();
         this.state = {
             has_more:true,
-            total_count:0,
             dataLv:IList([]),
             setState:(state)=>{
                 this.setState(state);
@@ -49,7 +49,7 @@ export default class MyPage extends BaseComponent {
         console.log('onPress__list_item',item);
 
         const { goBack,navigate } = this.props.navigation;
-        navigate(constant_util.route_name.ProviderDetail, { detail : item })
+        navigate(constant_util.route_name.BillDetail, { detail : item })
     };
 
 
@@ -108,48 +108,77 @@ export default class MyPage extends BaseComponent {
 
         let has_more = false;
         let dataLvNew = this.state.dataLv;
-        let total_count = this.state.total_count;
+        if (page_number === 1) {
+            dataLvNew = IList([]);
+        }
+        let total_count = this.total_count;
 
-        if(!jsonObj){
-            this.state.setState({
-                has_more,
-                total_count,
-                dataLv:dataLvNew,
-            });
+        if (!jsonObj) {
+            this.set_has_more_false();
             return;
         }
 
-        if(!(jsonObj.get('code') == CODE.code_0.code)){
-            view_util.show_toast(api_util.get_msg(jsonObj));
-            this.state.setState({
-                has_more,
-                total_count,
-                dataLv:dataLvNew,
-            });
+        if (!(jsonObj.get('code') == CODE.code_0.code)) {
+            api_util.on_custom_exception_common(jsonObj);
+            this.set_has_more_false();
             return;
         }
         total_count = jsonObj.get('data').get('total_count');
         let data_list = jsonObj.get('data').get('data_list');
-        data_list.map((item,i)=>{
-            let item_new = {
-                ...item,
-                key : item._id,
-                title : item.name,
-                subtitle : '',
-                extra : item.remark,
-            };
-            dataLvNew.push(item_new);
+        data_list.map((item, i) => {
+            // console.log(item,'data_list.map.item');
+
+            /**
+             *
+             item:{
+                "_id": "5b3e128e5f9a81e5af078c09",
+                "name": "name22346",
+                "remark": "remark",
+                "type": "1",
+                "create_time": "2018-07-05T12:43:58.224Z",
+                "transaction_amount": {
+                    "$numberDecimal": "100"
+                }
+
+       };
+
+             * */
+
+            let _id = item.get('_id');
+            let type = item.get('type');//账单类型  1-付钱，2-收钱
+            let name = item.get('name');
+            let transaction_amount = string_util.decimal2string_show(item.get('transaction_amount'));
+            let remark = item.get('remark');
+            let create_time = my_date_time_util.format2MM_DD__HH_mm(item.get('create_time'));
+
+            let symbol = '';
+            if (type == 1) {
+                symbol = '-';
+            } else if (type == 2) {
+                symbol = '+';
+            }
+
+            let item_new = IMap({
+                item : item,
+                key : _id,
+                title : name,
+                subtitle : create_time,
+                extra : symbol + transaction_amount,
+            });
+            dataLvNew = dataLvNew.push(item_new);
+            // console.log(dataLvNew,'data_list.map.dataLvNew');
+
         });
 
-        if(total_count>dataLvNew.length){
+        if (total_count > dataLvNew.size) {
             has_more = true;
         }
-        dataLvNew = cloneDeep(dataLvNew);
+        console.log(dataLvNew, 'data_list.map.dataLvNew');
+        this.total_count = total_count;
 
         this.state.setState({
             has_more,
-            total_count,
-            dataLv:dataLvNew,
+            dataLv : dataLvNew,
         })
     };
     onRefresh = async ()=> {

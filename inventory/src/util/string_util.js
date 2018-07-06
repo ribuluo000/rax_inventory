@@ -18,6 +18,10 @@ let obj = {
   },
 
 
+    decimal2string_show:(decimal)=>{
+        return decimal.get('$numberDecimal').toString()
+    },
+
 };
 
 

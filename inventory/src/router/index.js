@@ -17,6 +17,7 @@ import ProviderDetail from "../container/My/Provider/Detail";
 import CustomerDetail from "../container/My/Customer/Detail";
 import ProductDetail from "../container/My/Product/Detail";
 import ProductBatchDetail from "../container/My/Product/Batch/Detail";
+import BillDetail from "../container/My/Bill/Detail";
 
 
 
@@ -24,6 +25,7 @@ const BasicApp = StackNavigator({
     Login : { screen : Login },
     Register : { screen : Register },
     Bill : { screen : Bill },
+    BillDetail : { screen : BillDetail },
     ProductBatch : { screen : ProductBatch },
     ProductBatchAdd : { screen : ProductBatchAdd },
     ProductBatchDetail : { screen : ProductBatchDetail },
