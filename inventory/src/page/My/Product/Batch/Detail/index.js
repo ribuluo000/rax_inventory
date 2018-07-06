@@ -21,10 +21,10 @@ export default class MyPage extends BaseComponent {
         let detail = this.props.navigation.state.params.detail;
         console.log('come in data', detail);
 
-        this.name = detail.name;
-        this._id = detail._id;
-        this.remark = detail.remark;
-        this.create_time = detail.create_time;
+        this.name = detail.get('name');
+        this._id = detail.get('_id');
+        this.remark = detail.get('remark');
+        this.create_time = detail.get('create_time');
     };
 
     constructor(props) {

@@ -49,7 +49,7 @@ export default class MyPage extends BaseComponent {
         console.log('onPress__list_item',item);
 
         const { goBack,navigate } = this.props.navigation;
-        navigate(constant_util.route_name.CustomerDetail, { detail : item })
+        navigate(constant_util.route_name.CustomerDetail, { detail : item.get('item') })
     };
 
 
