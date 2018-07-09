@@ -5,7 +5,7 @@ import style_base_value_util from './style_base_value_util';
 export default {
     style_base_value_util,
     common_container : {
-        padding : 40,
+        padding : '40rem',
         backgroundColor:'#ffffff',
 
     },
@@ -152,20 +152,20 @@ export default {
             'color-line1-1' : '#DADADA',
             'color-line1-2' : '#E0E0E0',
             'color-text1-1' : '#9E9E9E',
-            ['font-size-title'] : 40,
-            ['font-size-subhead'] : 32,
-            ['font-size-body-3'] : 28,
-            ['font-size-body-2'] : 28,
-            ['font-size-body-1'] : 28,
-            ['font-size-caption'] : 24,
-            ['font-size-footnote'] : 20
+            ['font-size-title'] : '40rem',
+            ['font-size-subhead'] : '32rem',
+            ['font-size-body-3'] : '28rem',
+            ['font-size-body-2'] : '28rem',
+            ['font-size-body-1'] : '28rem',
+            ['font-size-caption'] : '24rem',
+            ['font-size-footnote'] : '20rem'
         },
         Input : {
-            'md-placeholder-height' : 50,
-            'md-help-margin-top' : 16,
-            'md-input-height' : 50,
-            'md-placeholder-font-size' : 28,
-            'md-input-margin-bottom' : 0
+            'md-placeholder-height' : '50rem',
+            'md-help-margin-top' : '16rem',
+            'md-input-height' : '50rem',
+            'md-placeholder-font-size' : '28rem',
+            'md-input-margin-bottom' : '0rem'
         }
     },
 

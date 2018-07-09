@@ -29,6 +29,10 @@ export default class MyLabelExtraComponent extends Component {
                     style_util.flex1,
                     style_util.flexDirectionRow,
                     style_util.justifyContentSpaceBetween,
+                    {
+                        marginTop:style_util.style_base_value_util.sizeXXS,
+                        marginBottom:style_util.style_base_value_util.sizeXXS,
+                    }
 
                 ]}
             >

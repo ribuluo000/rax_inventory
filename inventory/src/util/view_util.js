@@ -33,7 +33,7 @@ export default {
         backgroundColor = style_util.style_base_value_util.commonSeparatorColor) => {
         let v = (
             <View style={{
-                height : height*1,
+                height : height,
                 width : '100%',
                 backgroundColor : backgroundColor
             }}

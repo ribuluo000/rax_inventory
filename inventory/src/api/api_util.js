@@ -126,6 +126,11 @@ export default {
         return await request_common(url, data, callback);
     },
 
+    bill_detail : async (data = {}, callback) => {
+        let url = CONFIG.API_BASE_URL + REQ_URL.REQ_URL___bill__detail;
+        return await request_common(url, data, callback);
+    },
+
 
 
 };
