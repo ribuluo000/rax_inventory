@@ -98,13 +98,17 @@ export default class MyListViewComponent extends PureComponent{
     let {
       // dataLv,
       renderHeader,
-      renderRow,
+        renderRow,
       onEndReached,
       onRefresh,
 
     } = this.props;
 
     let {isLoading} = this.state;
+
+        const renderFooter = this.props.renderFooter ||( () => (<div style={{ padding: 30, textAlign: 'center' }}>
+            {isLoading ? 'Loading...' : 'Loaded'}
+        </div>));
 
     return (
         <ScrollView
@@ -125,9 +129,7 @@ export default class MyListViewComponent extends PureComponent{
               ref={ref => this.ref__lv = ref}
               dataSource={this.state.dataSource}
               renderHeader={renderHeader}
-              renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
-                  {isLoading ? 'Loading...' : 'Loaded'}
-              </div>)}
+              renderFooter={renderFooter}
               renderRow={renderRow}
               style={{
                   height: this.state.height,

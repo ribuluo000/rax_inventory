@@ -170,4 +170,20 @@ export default {
     },
 
 
+    my_top_view1: {
+        marginTop : style_base_value_util.sizeXXS,
+        marginBottom : style_base_value_util.sizeXXS,
+        fontSize : style_base_value_util.fontSizeXL,
+        color : style_base_value_util.textColorBlack,
+        textAlign : 'center',
+    },
+
+    my_top_view2: {
+        marginTop : style_base_value_util.sizeXXS,
+        marginBottom : style_base_value_util.sizeXXS,
+        fontSize : style_base_value_util.fontSizeL,
+        color : style_base_value_util.textColorGray,
+        textAlign : 'center',
+    },
+
 };

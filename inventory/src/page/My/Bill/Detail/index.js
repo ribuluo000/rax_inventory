@@ -11,6 +11,13 @@ const { isWeb, appInfo } = Env;
 const { StyleProvider } = ThemeProvider;
 import MyHeaderComponent from "../../../../component/MyHeaderComponent";
 import BaseComponent from "../../../../common/BaseComponent";
+import MyTopView1 from "./components/MyTopView1";
+import MyTopView2 from "./components/MyTopView2";
+import MyLabelExtraComponent from "../../../../component/MyLabelExtraComponent";
+import MyListViewComponent from "../../../../component/MyListViewComponent";
+const TYPE_VIEW_ORDER_NUMBER = 'TYPE_VIEW_ORDER_NUMBER';
+const TYPE_VIEW_PRODUCTS = 'TYPE_VIEW_PRODUCTS';
+
 export default class MyPage extends BaseComponent {
     static navigationOptions = {
         title : ({ state }) => state.params.name,
@@ -21,18 +28,18 @@ export default class MyPage extends BaseComponent {
         let detail = this.props.navigation.state.params.detail;
         console.log('come in data', detail);
 
+        this.symbol_money = detail.get('extra');
         this.name = detail.get('item').get('name');
         this._id = detail.get('item').get('_id');
         this.remark = detail.get('item').get('remark');
-        this.telephone = detail.get('item').get('telephone');
-        this.create_time = detail.get('item').get('create_time');
+        this.create_time = my_date_time_util.format2YYYY_MM_DD__HH_mm_ss(detail.get('item').get('create_time'));
     };
 
     constructor(props) {
         super(props);
         this.initData();
         this.state = {
-            editable : false,
+            data : null,
             setState : (state) => {
                 this.setState(state);
             },
@@ -46,121 +53,198 @@ export default class MyPage extends BaseComponent {
     // };
 
 
-    api_call = async ()=> {
-        console.log('onRefresh',this);
 
-        //refresh data
+    componentDidMount() {
+        this.api_call();
 
-        let name = this.name;
-        let remark = this.remark;
-        let telephone = this.telephone;
-        let id = this._id;
+    }
+
+    api_call = async () => {
 
         let access_token = 'access_token';  //todo need change
-        let user_id = '5b31b58fdd66b03a1dcb5434';   //todo need change
+        let user_id = '5b31b58fdd66b03a1dcb5434'; //todo need change
+        let id = this._id; //
         let body = {
             access_token,
             user_id,
-            name,
-            remark,
-            telephone,
             id,
         };
 
         view_util.show_loading();
-        let jsonObj = await api_util.provider_update_detail(body);
+        let jsonObj = await api_util.bill_detail(body);
         view_util.hide_loading();
 
-        if(!jsonObj){
+        if (!jsonObj) {
             return;
         }
 
-        if(!(jsonObj.get('code') == CODE.code_0.code)){
-
+        if (!(jsonObj.get('code') == CODE.code_0.code)) {
             api_util.on_custom_exception_common(jsonObj);
             return;
         }
 
-        api_util.on_success_common(jsonObj);
-
-        this.onPress_back();
-    };
-
-
-
-    check_info = () => {
-
-        if (string_util.is_empty(this.name)) {
-            view_util.show_toast(MSG.MSG___name_can_not_be_empty);
-            return false;
-
-        }
-
-        return true;
-
-    };
-
-    onPress__button__done = ()=>{
-
-        console.log('onPress_right_btn');
-        console.log(this);
-
-        if (!this.check_info()) {
-            return;
-        }
-
-        this.api_call();
-    };
-
-
-    onPress__button__edit = () => {
-        console.log('onPress__button__edit');
         this.state.setState({
-            editable : true,
+            data : jsonObj.get('data')
         })
+
     };
 
-    onChange_name = (value) => {
-        console.log('onChange_name', value);
-        this.name = value;
-    };
-    onChange_remark = (value) => {
-        console.log('onChange_remark', value);
-        this.remark = value;
-    };
-    onChange_telephone = (value) => {
-        console.log('onChange_telephone', value);
-        this.telephone = value;
-    };
-
-    onPress_right_btn = ()=>{
-        if(this.state.editable){
-            this.onPress__button__done();
-        }else {
-            this.onPress__button__edit();
+    get_view_order_number = (order_number) => {
+        if (!order_number) {
+            return null;
         }
+
+        const {
+            intl,
+        } = this.props;
+        return (
+            <MyLabelExtraComponent
+                title={constant_show_util.order_number}
+                extra={order_number}
+
+            />
+        );
     };
+
+    renderRow = (item,i)=>{
+        let v = (
+            <View
+                key={item.get('_id')}
+                justify="between" direction="column">
+
+                <MyLabelExtraComponent
+                    title={constant_show_util.product_name}
+                    extra={item.get('name_product')}
+
+                />
+                <MyLabelExtraComponent
+                    title={constant_show_util.batch_name}
+                    extra={item.get('name_batch')}
+
+                />
+                <MyLabelExtraComponent
+                    title={constant_show_util.product_price}
+                    extra={string_util.decimal2string_show(item.get('price'))}
+
+                />
+                <MyLabelExtraComponent
+                    title={constant_show_util.product_count}
+                    extra={string_util.decimal2string_show(item.get('count'))}
+
+                />
+                <MyLabelExtraComponent
+                    title={constant_show_util.product_total_price}
+                    extra={string_util.decimal2string_show(item.get('total_price'))}
+
+                />
+                <MyLabelExtraComponent
+                    title={constant_show_util.remark}
+                    extra={item.get('remark')}
+
+                />
+
+            </View>
+        );
+
+        return v;
+    };
+
+    get_view_products = (dataList) => {
+        if (!dataList) {
+            return null;
+        }
+
+        const {
+            intl,
+        } = this.props;
+        console.log(dataList);
+        return (<View>
+            <MyListViewComponent
+                ref={(ref)=>{
+                    this.ref_lv = ref;
+                }}
+                dataLv={dataList}
+                hasMore={false}
+                onEndReached={()=>{}}
+                onRefresh={()=>{}}
+                renderRow={this.renderRow}
+                renderHeader={null}
+                renderFooter={()=>null}
+            />
+        </View>);
+    };
+
+    get_view_by_data_and_type = (type) => {
+        let data = this.state.data;
+        if (!data) {
+            return null;
+        }
+
+        switch (type) {
+            case TYPE_VIEW_ORDER_NUMBER:
+                return this.get_view_order_number(data.get('order_number'));
+                break;
+            case TYPE_VIEW_PRODUCTS:
+                return this.get_view_products(data.get('products'));
+                break;
+            default:
+                return null;
+        }
+        return null;
+    };
+
 
     render() {
 
 
+
         const {
-            editable,
-        } = this.state;
+            intl,
 
-        const onPress__button__done = this.onPress__button__done;
-        const onPress__button__edit = this.onPress__button__edit;
-        const onChange_name = this.onChange_name;
-        const onChange_telephone = this.onChange_telephone;
-        const onChange_remark = this.onChange_remark;
+            user_name,
+            onPress__button__back,
 
-        let right_button_text = null;
-        if (editable) {
+        } = this.props;
 
-            right_button_text = constant_show_util.done;
-        } else {
-            right_button_text = constant_show_util.edit;
+        /**
+         *
+
+         {
+        "code":0,
+        "req_url":"/bill/detail",
+        "msg":"",
+        "data":{
+            "id":"id",
+            "type":"type",
+            "remark":"remark",
+            "order_number":"1111111111",
+            "transaction_amount":100,
+            "create_time":1111111111111,
+            "provider":{
+                "object_id":"object_id",
+                "name":"name"
+            },
+            "customer":{
+                "object_id":"object_id",
+                "name":"name"
+            },
+            "products":[
+                {
+                    "object_id_product":"object_id_product",
+                    "object_id_batch":"object_id_batch",
+                    "name_product":"name_product",
+                    "name_batch":"name_batch",
+                    "remark":"remark",
+                    "price":10,
+                    "count":10,
+                    "total_price":100
+                }
+            ]
         }
+    }
+
+         * */
+
 
 
         return (
@@ -170,10 +254,8 @@ export default class MyPage extends BaseComponent {
             >
                 <View style={style_util.common_container}>
                     <MyHeaderComponent
-                        title={constant_show_util.provider}
+                        title={constant_show_util.bill}
                         onPress_back={this.onPress_back}
-                        right_btn_text={right_button_text}
-                        onPress_right_btn={this.onPress_right_btn}
 
                     />
 
@@ -182,33 +264,32 @@ export default class MyPage extends BaseComponent {
                         ref="ref_ScrollView"
                         {...view_props_util.common_ScrollView}
                     >
-                    <Input
-                        disabled={!editable}
-                        defaultValue={this.name}
-                        onChange={onChange_name}
-                        maxLength={19}
-                        type="text"
-                        placeholder={constant_show_util.please_input_name}
-                        ref={(ref) => {
-                            this.ref_Input_name = ref;
-                        }}
-                    />
-                    <Input
-                        disabled={!editable}
-                        defaultValue={this.telephone}
-                        onChange={onChange_telephone}
-                        maxLength={19}
-                        type="number"
-                        placeholder={constant_show_util.please_input_telephone}
-                        ref={(ref) => {
-                            this.ref_Input_telephone = ref;
-                        }}
-                    />
+
+                        <View
+                            
+                        >
+                            <MyTopView1>
+                                {this.name}
+                            </MyTopView1>
+                            <MyTopView2>
+                                {this.symbol_money}
+                            </MyTopView2>
+                        </View>
+
+                        <MyLabelExtraComponent
+                            title={constant_show_util.create_time}
+                            extra={this.create_time}
+
+                        />
+
+                        {this.get_view_by_data_and_type(TYPE_VIEW_ORDER_NUMBER)}
+
+                        {this.get_view_by_data_and_type(TYPE_VIEW_PRODUCTS)}
+
 
                     <Input
-                        disabled={!editable}
+                        disabled={true}
                         defaultValue={this.remark}
-                        onChange={onChange_remark}
                         style={{ height: '300rem', marginBottom: '20rem' }}
                         // rows={20}
                         maxLength={100}
