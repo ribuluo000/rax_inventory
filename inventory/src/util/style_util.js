@@ -2,6 +2,7 @@
  * Created by nick on 2018/6/28.
  */
 import style_base_value_util from './style_base_value_util';
+import my_screen_util from "./my_screen_util";
 export default {
     style_base_value_util,
     common_container : {
@@ -11,6 +12,10 @@ export default {
     },
     common_ScrollView : {
         flex: 1,
+        paddingTop: '20rem',
+        paddingBottom: '30rem',
+        height:my_screen_util.get_screen_height(),
+        backgroundColor:style_base_value_util.backgroundColorWhite,
     },
 
     /**

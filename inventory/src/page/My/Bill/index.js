@@ -196,7 +196,7 @@ export default class MyPage extends BaseComponent {
         console.log('onPress_right_btn');
 
         const { goBack,navigate } = this.props.navigation;
-        navigate(constant_util.route_name.ProviderAdd, {})
+        navigate(constant_util.route_name.BillAdd, {})
     };
     onPress__button__search = async (value) => {
         console.log('onPress__button__search', value);

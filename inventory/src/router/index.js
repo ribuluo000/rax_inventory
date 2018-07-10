@@ -8,6 +8,7 @@ import Customer from "../container/My/Customer";
 import Product from "../container/My/Product";
 import ProductBatch from "../container/My/Product/Batch";
 
+import BillAdd from "../container/My/Bill/Add";
 import ProviderAdd from "../container/My/Provider/Add";
 import CustomerAdd from "../container/My/Customer/Add";
 import ProductAdd from "../container/My/Product/Add";
@@ -22,10 +23,13 @@ import BillDetail from "../container/My/Bill/Detail";
 
 
 const BasicApp = StackNavigator({
+    Bill : { screen : Bill },
+    BillAdd : { screen : BillAdd },
+    BillDetail : { screen : BillDetail },
     Login : { screen : Login },
     Register : { screen : Register },
-    Bill : { screen : Bill },
-    BillDetail : { screen : BillDetail },
+
+
     ProductBatch : { screen : ProductBatch },
     ProductBatchAdd : { screen : ProductBatchAdd },
     ProductBatchDetail : { screen : ProductBatchDetail },

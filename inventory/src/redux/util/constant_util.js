@@ -13,3 +13,11 @@ export const API_LOGIN_SUCCESS = 'inventory/Login/API_LOGIN_SUCCESS';
 export const API_LOGIN_ERROR = 'inventory/Login/API_LOGIN_ERROR';
 
 /****************************** network end **************************************/
+
+//账单添加
+export const RESET_Bill_Add = 'inventory/BillAdd/RESET_Bill_Add';
+export const CHANGE_SELECTED_PROVIDER = 'inventory/BillAdd/CHANGE_SELECTED_PROVIDER';
+export const CHANGE_SELECTED_CUSTOMER = 'inventory/BillAdd/CHANGE_SELECTED_CUSTOMER';
+export const ADD_PRODUCT = 'inventory/BillAdd/ADD_PRODUCT';
+export const REMOVE_PRODUCT = 'inventory/BillAdd/REMOVE_PRODUCT';
+

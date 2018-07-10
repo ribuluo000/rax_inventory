@@ -8,6 +8,7 @@
     "lint": "eslint --ext .js --ext .jsx ./src"
   },
   "dependencies": {
+    "decimal.js": "^10.0.1",
     "driver-webgl": "^0.6.4",
     "immutable": "^3.8.2",
     "lodash": "^4.17.10",
@@ -33,6 +34,7 @@
     "rax-multirow": "^0.6.4",
     "rax-navigation": "^0.6.4",
     "rax-parallax": "^0.6.4",
+    "rax-picker": "^0.6.4",
     "rax-picture": "^0.6.4",
     "rax-player": "^0.6.4",
     "rax-recyclerview": "^0.6.4",
